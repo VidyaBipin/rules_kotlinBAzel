@@ -62,9 +62,17 @@ def kt_download_local_dev_dependencies():
     maybe(
         http_archive,
         name = "bazel_worker_java",
-        sha256 = versions.BAZEL_WORKER_API.sha256,
-        strip_prefix = "bazel-worker-api-{version}/java/".format(version = versions.BAZEL_WORKER_API.version),
-        urls = [url.format(version = versions.BAZEL_WORKER_API.version) for url in versions.BAZEL_WORKER_API.url_templates],
+        sha256 = versions.BAZEL_WORKER_JAVA.sha256,
+        strip_prefix = "bazel-worker-api-{version}/java/".format(version = versions.BAZEL_WORKER_JAVA.version),
+        urls = [url.format(version = versions.BAZEL_WORKER_JAVA.version) for url in versions.BAZEL_WORKER_JAVA.url_templates],
+    )
+
+    maybe(
+        http_archive,
+        name = "bazel_worker_api",
+        sha256 = versions.BAZEL_WORKER_JAVA.sha256,
+        strip_prefix = "bazel-worker-api-{version}/proto/".format(version = versions.BAZEL_WORKER_JAVA.version),
+        urls = [url.format(version = versions.BAZEL_WORKER_JAVA.version) for url in versions.BAZEL_WORKER_JAVA.url_templates],
     )
 
     versions.use_repository(
