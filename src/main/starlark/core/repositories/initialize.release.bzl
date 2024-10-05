@@ -97,11 +97,11 @@ def kotlin_repositories(
         return
 
     maybe(
-        http_archive,
+        http_file,
         name = "rules_android",
-        sha256 = versions.ANDROID.SHA,
-        strip_prefix = "rules_android-%s" % versions.ANDROID.VERSION,
-        urls = versions.ANDROID.URLS,
+        sha256 = versions.ANDROID.sha256,
+        strip_prefix = "rules_android-%s" % versions.ANDROID.version,
+        urls = [url.format(version = versions.ANDROID.version) for url in versions.ANDROID.url_templates],
     )
 
     versions.use_repository(
