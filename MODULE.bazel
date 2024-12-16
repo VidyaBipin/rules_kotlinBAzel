@@ -36,7 +36,9 @@ use_repo(
     "released_com_github_jetbrains_kotlin",
 )
 
-register_toolchains("@released_rules_kotlin//kotlin/internal:default_toolchain")
+# Register bootstrap toolchain
+register_toolchains("//src/main/kotlin:bootstrap_toolchain")
+register_toolchains("//src/main/starlark/core/compile/...")
 
 # Back to the regularly scheduled configuration.
 register_toolchains("//kotlin/internal:default_toolchain")
@@ -73,9 +75,9 @@ maven.install(
         "com.google.auto.service:auto-service-annotations:1.1.1",
         "com.google.auto.value:auto-value:1.10.1",
         "com.google.auto.value:auto-value-annotations:1.10.1",
-        "com.google.dagger:dagger:2.51",
-        "com.google.dagger:dagger-compiler:2.51",
-        "com.google.dagger:dagger-producers:2.51",
+        "com.google.dagger:dagger:2.53.1",
+        "com.google.dagger:dagger-compiler:2.53.1",
+        "com.google.dagger:dagger-producers:2.53.1",
         "javax.annotation:javax.annotation-api:1.3.2",
         "javax.inject:javax.inject:1",
         "org.apache.commons:commons-compress:1.26.2",
